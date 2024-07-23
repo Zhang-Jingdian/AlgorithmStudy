@@ -75,6 +75,19 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
     }
     //遍历
+    public void loop3(Consumer<Integer> before,Consumer<Integer> after){
+        recursion(head,before,after);
+    }
+    //递归
+    private void recursion(Node curr,Consumer<Integer> before,Consumer<Integer> after){//针对某个节点要进行的操作
+        if(curr==null){
+            return;
+        }
+        before.accept(curr.value);
+        recursion(curr.next,before,after);
+        after.accept(curr.value);
+    }
+    //遍历
     @Override
     public Iterator<Integer> iterator() {
         //匿名内部类
